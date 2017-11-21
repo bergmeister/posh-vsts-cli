@@ -1,7 +1,7 @@
 Function Invoke-VstsCli
 {
     $arguments = $args -join " "
-    cmd /c "vsts $($arguments)"
+    & Invoke-Expression "vsts $($arguments)"
 }
 
 <#
