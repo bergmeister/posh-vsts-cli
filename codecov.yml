@@ -1,0 +1,19 @@
+codecov:
+  notify:
+    require_ci_to_pass: no
+  # baseline branch for reporting
+  branch: master
+
+coverage:
+  range: 50..80
+  round: down
+  precision: 0
+
+coverage:
+  status:
+    patch:
+      default:
+        # Set the pull request requirement to not regress overall coverage by more than 10%
+        # and let codecov.io set the goal for the code changed in the patch.
+        target: auto
+        threshold: 10
