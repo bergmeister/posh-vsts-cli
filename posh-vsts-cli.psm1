@@ -17,8 +17,7 @@ function ConvertFrom-VstsCli
     [CmdletBinding()]
     param
     (
-        [Parameter(Mandatory = $True,
-            ValueFromPipeline = $True)]
+        [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
         [object[]]$InputObject,
 
         [switch]
@@ -121,6 +120,10 @@ function GetColumnInfo($headerRow)
             if ($temp -eq 2) # the first ID columns is right aligned -> move position to the very left
             {
                 $temp = 0
+            }
+            if ($lastIndex -lt 0)
+            {
+                $lastIndex = $headerRow.Length - 1 # last columns sometimes 'overflows'
             }
             New-Object PSObject -Property @{ HeaderName = $name; Name = PascalName $name; Start = $temp; End = $lastIndex}
         }
