@@ -2,14 +2,15 @@ Describe 'posh-vsts-cli' {
     
     Context 'Module' {
 
-        It "Imports OK and exports the correct functions" {
+        It "Imports OK and exports the correct functions and alias" {
             $poshvstscli_moduleName = 'posh-vsts-cli'
             Import-Module (Join-Path $PSScriptRoot "$poshvstscli_moduleName.psd1")
-            Get-Module $poshvstscli_moduleName | Should Not Be Null
+            Get-Module $poshvstscli_moduleName | Should Not Be $null
             $exportedFunctions = Get-Command -Module $poshvstscli_moduleName
             $exportedFunctions.Length | Should Be 2
-            $exportedFunctions | Where-Object Name -eq ConvertFrom-VstsCli | Should Not Be Null
-            $exportedFunctions | Where-Object Name -eq Invoke-VstsCli | Should Not Be Null
+            $exportedFunctions | Where-Object Name -eq ConvertFrom-VstsCli | Should Not Be $null
+            $exportedFunctions | Where-Object Name -eq Invoke-VstsCli | Should Not Be $null
+            Get-Alias ivc | Should Not Be $null
         }
     }
 
@@ -23,7 +24,7 @@ Describe 'posh-vsts-cli' {
             )
             
             $outputAsObject = $output | ConvertFrom-VstsCli -FromTable
-            $outputAsObject | Should Not Be NullOrEmpty
+            $outputAsObject | Should Not BeNullOrEmpty 
             $outputAsObject.Length | Should Be 3
             $outputAsObject[0].Id | Should Be 201
             $outputAsObject[2].Id | Should Be 99

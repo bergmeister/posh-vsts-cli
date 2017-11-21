@@ -50,7 +50,7 @@
    RequiredAssemblies = @()
     
    # Script files (.ps1) that are run in the caller's environment prior to importing this module
-   ScriptsToProcess = @()
+   ScriptsToProcess = @('.\posh-vsts-cli_aliases.ps1')
     
    # Type files (.ps1xml) to be loaded when importing this module
    TypesToProcess = @()
@@ -73,7 +73,7 @@
    VariablesToExport = @()
     
    # Aliases to export from this module
-   AliasesToExport = @()
+   AliasesToExport = @('ivc')
     
    # List of all modules packaged with this module
    ModuleList = @()
