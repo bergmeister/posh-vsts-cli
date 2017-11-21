@@ -1,4 +1,4 @@
 image: Visual Studio 2017
 
 test_script:
-  - ps: Import-Module .\posh-vsts-cli.psm1
+  - ps: Import-Module .\posh-vsts-cli.psd1

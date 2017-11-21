@@ -8,5 +8,5 @@ First clone the repo or download it, e.g. `git clone https://github.com/bergmeis
 
 Then import the module
 ```powershell
-Import-Module .\vsts-cli.psm1
+Import-Module .\vsts-cli.psd1
 ```
