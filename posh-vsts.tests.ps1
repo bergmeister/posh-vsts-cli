@@ -41,4 +41,11 @@ Describe 'posh-vsts-cli' {
             $outputAsObject[2].Reason | Should Be 'individualCI'
         }
     }
+
+    Context 'PSScriptAnalyzer' {
+        It 'There are no PScriptAnalyzer warnings' {
+            $results = Invoke-ScriptAnalyzer . -Recurse
+            $results | Should Be $null
+        }
+    }
 }

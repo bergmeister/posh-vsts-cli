@@ -1,5 +1,8 @@
 Function Invoke-VstsCli
 {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingInvokeExpression", "")]
+    param()
+
     $arguments = $args -join " "
     & Invoke-Expression "vsts $($arguments)"
 }
