@@ -1,3 +1,9 @@
+Function Invoke-VstsCli
+{
+    $arguments = $args -join " "
+    cmd /c "vsts $($arguments)"
+}
+
 <#
 .SYNOPSIS
 Converts the JSON or table output of the vsts-cli output to PowerShell objects

@@ -1,11 +1,15 @@
 Describe 'posh-vsts-cli' {
     
-    Context 'ConvertFrom-VstsCli' {
+    Context 'Module' {
 
         It "Imports OK and exports the correct functions" {
-            Import-Module (Join-Path $PSScriptRoot 'posh-vsts-cli.psd1')
-            $exportedFunctions = Get-Command -Module posh-vsts-cli
-            $exportedFunctions.Length | Should Be 1
+            $poshvstscli_moduleName = 'posh-vsts-cli'
+            Import-Module (Join-Path $PSScriptRoot "$poshvstscli_moduleName.psd1")
+            Get-Module $poshvstscli_moduleName | Should Not Be Null
+            $exportedFunctions = Get-Command -Module $poshvstscli_moduleName
+            $exportedFunctions.Length | Should Be 2
+            $exportedFunctions | Where-Object Name -eq ConvertFrom-VstsCli | Should Not Be Null
+            $exportedFunctions | Where-Object Name -eq Invoke-VstsCli | Should Not Be Null
         }
     }
 }

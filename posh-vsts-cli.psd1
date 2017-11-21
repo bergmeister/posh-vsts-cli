@@ -63,7 +63,7 @@
     
    # Functions to export from this module
    FunctionsToExport = @(
-       'ConvertFrom-VstsCli'
+       'Invoke-VstsCli', 'ConvertFrom-VstsCli'
    )
     
    # Cmdlets to export from this module
