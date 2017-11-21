@@ -8,7 +8,7 @@ test_script:
         # Pester 
         Get-Module Pester -ListAvailable # Show Pester version (should be 3.4)
         $testResultsFile = ".\TestsResults.xml"
-        $results = Invoke-Pester -Path .\test -ExcludeTag 'NotAppVeyor' -OutputFormat NUnitXml -OutputFile $testResultsFile -CodeCoverage @(
+        $results = Invoke-Pester -Path . -OutputFormat NUnitXml -OutputFile $testResultsFile -CodeCoverage @(
              (Join-Path -Path $env:APPVEYOR_BUILD_FOLDER -ChildPath '*.psm1')
            ) -PassThru -Verbose
         (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path $testResultsFile))
