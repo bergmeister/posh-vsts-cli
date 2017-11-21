@@ -1,4 +1,4 @@
 image: Visual Studio 2017
 
-deploy_script:
+build_script:
   - ps: Import-Module .\posh-vsts-cli.psd1
