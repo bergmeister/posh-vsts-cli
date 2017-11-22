@@ -73,7 +73,10 @@ function ConvertFrom-VstsCli
     
     end
     {
-        $stringBuilder.ToString() | ConvertFrom-Json
+        if ($null -eq $stringBuilder)
+        {
+            $stringBuilder.ToString() | ConvertFrom-Json
+        }      
     }
 }
 
