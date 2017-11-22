@@ -73,7 +73,7 @@
    VariablesToExport = @()
     
    # Aliases to export from this module
-   AliasesToExport = @('ivc')
+   AliasesToExport = @('iv')
     
    # List of all modules packaged with this module
    ModuleList = @()

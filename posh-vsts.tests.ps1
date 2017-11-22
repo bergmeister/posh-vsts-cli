@@ -10,7 +10,7 @@ Describe 'posh-vsts-cli' {
             $exportedFunctions.Length | Should Be 2
             $exportedFunctions | Where-Object Name -eq ConvertFrom-VstsCli | Should Not Be $null
             $exportedFunctions | Where-Object Name -eq Invoke-VstsCli | Should Not Be $null
-            Get-Alias ivc | Should Not Be $null
+            Get-Alias iv | Should Not Be $null
         }
     }
 

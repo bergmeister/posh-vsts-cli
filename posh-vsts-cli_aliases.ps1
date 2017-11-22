@@ -1,1 +1,1 @@
-Set-Alias ivc Invoke-VstsCli
+Set-Alias iv Invoke-VstsCli
