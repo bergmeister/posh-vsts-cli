@@ -59,8 +59,21 @@ function ConvertFrom-VstsCli
         }
         else
         {
-            $oneInputObject | ConvertFrom-Json
+            # the JSON string comes in one character at a time in the pipeline
+            if ($null -eq $stringBuilder)
+            {
+                $stringBuilder = [System.Text.StringBuilder]::new()
+            }
+            foreach($oneInputObject in $InputObject)
+            {
+                [void]$stringBuilder.AppendLine($oneInputObject)
+            }
         }
+    }
+    
+    end
+    {
+        $stringBuilder.ToString() | ConvertFrom-Json
     }
 }
 
