@@ -23,7 +23,7 @@ Describe 'posh-vsts-cli' {
                         "  99  0.1.0+113  completed  failed                            3  My Fancy Project-CI  master           2017-10-01 22:41:02.456000  individualCI"
             )
             
-            $outputAsObject = $output | ConvertFrom-VstsCli -FromTable
+            $outputAsObject = $output | ConvertFrom-VstsCli
             $outputAsObject | Should Not BeNullOrEmpty 
             $outputAsObject.Length | Should Be 3
             $outputAsObject[0].Id | Should Be 201

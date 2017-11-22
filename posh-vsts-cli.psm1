@@ -1,10 +1,18 @@
+<#
+.SYNOPSIS
+Invokes the VSTS CLI and converts the output to a PowerShell object.
+.EXAMPLE
+ivc build list
+.EXAMPLE
+ivc build list --output table
+#>
 Function Invoke-VstsCli
 {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingInvokeExpression", "")]
     param()
 
     $arguments = $args -join " "
-    & Invoke-Expression "vsts $($arguments)"
+    & Invoke-Expression "vsts $($arguments)" | ConvertFrom-VstsCli
 }
 
 <#
@@ -13,7 +21,7 @@ Converts the JSON or table output of the vsts-cli output to PowerShell objects
 .EXAMPLE
 vsts build list | ConvertFrom-VstsCli
 .EXAMPLE
-vsts build list --output table | ConvertFrom-VstsCli -FromTable
+vsts build list --output table | ConvertFrom-VstsCli
 #>
 function ConvertFrom-VstsCli
 {
@@ -21,10 +29,7 @@ function ConvertFrom-VstsCli
     param
     (
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
-        [object[]]$InputObject,
-
-        [switch]
-        $FromTable
+        [string]$InputObject
     )
 
         
@@ -36,7 +41,12 @@ function ConvertFrom-VstsCli
 
     process
     {
-        if ($FromTable.IsPresent)
+        if ($null -eq $isTableFormat)
+        {
+            $isTableFormat = $InputObject.startswith("[")
+        }
+
+        if (-not $isTableFormat)
         {
             foreach ($oneInputObject in $InputObject)
             {
@@ -76,7 +86,8 @@ function ConvertFrom-VstsCli
         if ($null -ne $stringBuilder)
         {
             $stringBuilder.ToString() | ConvertFrom-Json
-        }      
+        }
+        $isTableFormat = $null     
     }
 }
 
