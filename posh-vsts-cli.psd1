@@ -8,7 +8,7 @@
    RootModule = 'posh-vsts-cli.psm1'
     
    # Version number of this module.
-   ModuleVersion = '1.0.2'
+   ModuleVersion = '1.1.0'
     
    # ID used to uniquely identify this module
    GUID = '5be9bec3-85ef-45a7-8e78-f28d2b71d40c'
@@ -23,7 +23,7 @@
    Copyright = '(c) 2017 Christoph Bergmeister. All rights reserved.'
     
    # Description of the functionality provided by this module
-   Description = 'Enhances the vsts-cli with tab completion and converts the output into PowerShell objects.'
+   Description = 'Enhances the vsts-cli with tab completion and converting the output into PowerShell objects.'
     
    # Minimum version of the Windows PowerShell engine required by this module
    PowerShellVersion = ''

@@ -1,9 +1,10 @@
 # posh-vsts-cli [![Build status](https://ci.appveyor.com/api/projects/status/29qq8ghr1mhlkaeh?svg=true)](https://ci.appveyor.com/project/bergmeister/posh-vsts-cli) [![AppVeyor tests](http://flauschig.ch/batch.php?type=tests&account=bergmeister&slug=posh-vsts-cli)](https://ci.appveyor.com/project/bergmeister/posh-vsts-cli/build/tests) [![codecov](https://codecov.io/gh/bergmeister/posh-vsts-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/bergmeister/posh-vsts-cli) [![PSScriptAnalyzer](https://img.shields.io/badge/Linter-PSScriptAnalyzer-blue.svg)](http://google.com) [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-A `PowerShell` helper that enhances the [vsts-cli](https://github.com/Microsoft/vsts-cli):
+A `Windows PowerShell` helper that enhances the [vsts-cli](https://github.com/Microsoft/vsts-cli) with
 
-- Wraps the CLI internally and converts the JSON or table output to a PowerShell object
-- Tab completion (currently under development but it already working for group and subgroup commands, e.g. `vsts build queue`)
+- Tab completion
+- Conversion of the JSON or table output to a PowerShell object by providing the `Convert-FromVstsCli` command
+- Wrapping the call to the `vsts` command and the object conversion in the `iv` command alias
 
 ![Subgroup and command tab completion](demos/tabcompletion_demo.gif)
 ![Subgroup and command tab completion](demos/Convert-fromVstsCli.gif)
@@ -48,7 +49,7 @@ The output conversion is currently only tested for the `build` commands of the V
 
 ## Tab Completion
 
-Tab completion is experimental at the moment but already works for subgroups and commands (i.e. the first 2 words after the `vsts` or `iv` command). The first time you use it in a new shell, you need to press tab twice but after that just one tab completes the current command.
+Tab completion already works for groups (e.g. `vstst build`), commands (e.g. `vsts build list`) and options (e.g. `vsts build list --top`). Tab completion is available for the `vsts` and the `iv` commands and commands. The first time you use it in a new shell, you need to press tab twice but after that just one tab completes the current command.
 
 ````powershell
 >vsts <TAB><TAB>
@@ -57,4 +58,10 @@ Tab completion is experimental at the moment but already works for subgroups and
 >vsts build list
 >vsts build list <TAB>
 >vsts build queue
+>vsts build queue --d <TAB>
+>vsts build queue --detect
+>vsts build queue --detect <TAB>
+>vsts build queue --instance
 ````
+
+It is intended to add future support for subgroups and tab complete on available entities (e.g. `vsts build queue --definition-name` to tab complete the available definition names)

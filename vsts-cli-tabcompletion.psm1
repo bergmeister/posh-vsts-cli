@@ -48,7 +48,14 @@ $completion_Vsts = {
             }
             elseif($commandAst.CommandElements.Count -eq 4)
             {
-                @('--help') | Get-AutoCompleteResult # TODO: parse other options
+                $optionCompletion = @()
+                    vsts $commandAst.CommandElements[1].ToString() $commandAst.CommandElements[2].ToString() --help | ForEach-Object {
+                        if ($_ -match "^\s{4,6}--(\w+)\s+(.+)") # 4 spaces and -- in help before option
+                        {
+                            $optionCompletion += "--$($Matches[1])"
+                        }
+                    }
+                $optionCompletion | Get-AutoCompleteResult
             }
 
             if ($state -eq "Unknown" -or $state -eq "Options")

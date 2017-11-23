@@ -8,7 +8,7 @@
    RootModule = 'vsts-cli-tabcompletion.psm1'
     
    # Version number of this module.
-   ModuleVersion = '1.0.1'
+   ModuleVersion = '1.1.0'
     
    # ID used to uniquely identify this module
    GUID = 'a874c02e-8e90-4698-beae-950799c0ea50'
