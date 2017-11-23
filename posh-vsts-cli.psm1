@@ -94,6 +94,7 @@ function ConvertFrom-VstsCli
 #region Table output parsing
 function PascalName($name)
 {
+    $name =  $name.Trim(' ') # get rid of leading whitespace
     $parts = $name.Split(" ")
     for ($i = 0 ; $i -lt $parts.Length ; $i++)
     {
