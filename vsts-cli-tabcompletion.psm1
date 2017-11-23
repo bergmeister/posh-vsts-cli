@@ -40,8 +40,17 @@ $completion_Vsts = {
     {
         $p = $commandAst.CommandElements[$i].ToString()
 
-        if ($p.StartsWith("-"))
+        if ($p.StartsWith("--"))
         {
+            if ($commandAst.CommandElements.Count -eq 2 -or $commandAst.CommandElements.Count -eq 3)
+            {
+                @('--help') | Get-AutoCompleteResult
+            }
+            elseif($commandAst.CommandElements.Count -eq 4)
+            {
+                @('--help') | Get-AutoCompleteResult # TODO: parse other options
+            }
+
             if ($state -eq "Unknown" -or $state -eq "Options")
             {
                 $commandParameters[$i] = "Option"
