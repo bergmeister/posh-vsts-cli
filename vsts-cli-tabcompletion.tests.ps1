@@ -17,6 +17,11 @@ Describe 'vsts-cli-tabcompletion' {
 
             }
             $commandCompletion = TabExpansion2 -inputScript "vsts b" -cursorColumn 6
+            $commandCompletion.CompletionMatches | Should Not Be $null
+            Write-Verbose $commandCompletion.CompletionMatches.ListItemText
+            Write-Verbose $commandCompletion.CompletionMatches.ResultType
+            Write-Verbose $commandCompletion.CompletionMatches.ToolTip
+            
             $commandCompletion.CompletionMatches.CompletionText | Should Be 'build'
         }
     }
