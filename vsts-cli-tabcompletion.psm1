@@ -156,5 +156,6 @@ if (-not $global:options) { $global:options = @{CustomArgumentCompleters = @{}; 
 }
 $global:options['NativeArgumentCompleters']['vsts'] = $Completion_Vsts
 $global:options['NativeArgumentCompleters']['iv'] = $Completion_Vsts
+$global:options['NativeArgumentCompleters']['Invoke-VstsCli'] = $Completion_Vsts
 
 $function:tabexpansion2 = $function:tabexpansion2 -replace 'End\r\n{', 'End { if ($null -ne $options) { $options += $global:options} else {$options = $global:options}'
