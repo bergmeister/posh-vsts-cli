@@ -6,6 +6,7 @@ A `PowerShell` helper that enhances the [vsts-cli](https://github.com/Microsoft/
 - Tab completion (experimental but already working for group and subgroup commands, e.g. `vsts build queue`)
 
 ![Subgroup and command tab completion](demos/tabcompletion_demo.gif)
+![Subgroup and command tab completion](demos/Convert-fromVstsCli.gif)
 
 ## Usage
 
