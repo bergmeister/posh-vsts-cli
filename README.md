@@ -5,6 +5,8 @@ A `PowerShell` helper that enhances the [vsts-cli](https://github.com/Microsoft/
 - Wraps the CLI internally and converts the JSON or table output to a PowerShell object
 - Tab completion (experimental but already working for group and subgroup commands, e.g. `vsts build queue`)
 
+![Subgroup and command tab completion](demos/tabcompletion_demo.gif)
+
 ## Usage
 
 First clone the repo or download it, e.g. `git clone https://github.com/bergmeister/posh-vsts-cli.git`
