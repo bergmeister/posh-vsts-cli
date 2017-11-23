@@ -10,7 +10,7 @@ A `PowerShell` helper that enhances the [vsts-cli](https://github.com/Microsoft/
 
 ## Installation
 
-Install it from the `PSGallery`
+Install it from the [PSGallery](https://www.powershellgallery.com/packages/posh-vsts-cli/1.0):
 
 ````powershell
 Install-Module posh-vsts-cli
