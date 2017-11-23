@@ -1,17 +1,17 @@
 #
-# Module manifest for module 'posh-vsts-cli'
+# Module manifest for module 'vsts-cli-tabcompletion'
 #
  
 @{
     
    # Script module or binary module file associated with this manifest
-   RootModule = 'posh-vsts-cli.psm1'
+   RootModule = 'vsts-cli-tabcompletion.psm1'
     
    # Version number of this module.
    ModuleVersion = '1.0'
     
    # ID used to uniquely identify this module
-   GUID = '5be9bec3-85ef-45a7-8e78-f28d2b71d40c'
+   GUID = 'a874c02e-8e90-4698-beae-950799c0ea50'
     
    # Author of this module
    Author = 'Christoph Bergmeister'
@@ -23,7 +23,7 @@
    Copyright = '(c) 2017 Christoph Bergmeister. All rights reserved.'
     
    # Description of the functionality provided by this module
-   Description = 'A wrapper around the vsts-cli that converts the output into PowerShell objects.'
+   Description = 'A tab completion module for the  vsts-cli and posh-vsts-cli'
     
    # Minimum version of the Windows PowerShell engine required by this module
    PowerShellVersion = ''
@@ -44,13 +44,13 @@
    ProcessorArchitecture = ''
     
    # Modules that must be imported into the global environment prior to importing this module
-   RequiredModules = @('.\vsts-cli-tabcompletion.psd1')
+   RequiredModules = @()
     
    # Assemblies that must be loaded prior to importing this module
    RequiredAssemblies = @()
     
    # Script files (.ps1) that are run in the caller's environment prior to importing this module
-   ScriptsToProcess = @('.\posh-vsts-cli_aliases.ps1')
+   ScriptsToProcess = @()
     
    # Type files (.ps1xml) to be loaded when importing this module
    TypesToProcess = @()
@@ -62,9 +62,7 @@
    NestedModules = @()
     
    # Functions to export from this module
-   FunctionsToExport = @(
-       'Invoke-VstsCli', 'ConvertFrom-VstsCli'
-   )
+   FunctionsToExport = @()
     
    # Cmdlets to export from this module
    CmdletsToExport = @()
@@ -73,7 +71,7 @@
    VariablesToExport = @()
     
    # Aliases to export from this module
-   AliasesToExport = @('iv')
+   AliasesToExport = @()
     
    # List of all modules packaged with this module
    ModuleList = @()

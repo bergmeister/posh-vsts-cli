@@ -48,7 +48,6 @@ The output conversion is currently only tested for the `build` commands of the V
 Tab completion is experimental at the moment but already works for groups and subgroups (i.e. the first 2 words after the `vsts` or `iv` command). The first time you use it in a new shell, you need to press tab twice but afterwards just one tab completes the current command.
 
 ````powershell
-> Import-Module .\vsts-cli-tabcompletion.psm1
 >vsts <TAB><TAB>
 >vsts build
 >vsts build <TAB>
