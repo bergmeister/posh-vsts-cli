@@ -48,14 +48,14 @@ $completion_Vsts = {
             }
             elseif($commandAst.CommandElements.Count -eq 4)
             {
-                $optionCompletion = @()
+                $script:optionCompletion = @()
                     vsts $commandAst.CommandElements[1].ToString() $commandAst.CommandElements[2].ToString() --help | ForEach-Object {
                         if ($_ -match "^\s{4,6}--(\w+)\s+(.+)") # 4 spaces and -- in help before option
                         {
-                            $optionCompletion += "--$($Matches[1])"
+                            $script:optionCompletion += "--$($Matches[1])"
                         }
                     }
-                $optionCompletion | Get-AutoCompleteResult
+                $script:optionCompletion | Get-AutoCompleteResult
             }
 
             if ($state -eq "Unknown" -or $state -eq "Options")
