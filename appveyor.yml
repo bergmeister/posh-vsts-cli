@@ -1,6 +1,7 @@
 image: Visual Studio 2017
 
-install:
+install: 
+  - ps: $PSVersionTable
   - ps: Install-Module PSScriptAnalyzer -Scope CurrentUser -Force
 
 build_script:
