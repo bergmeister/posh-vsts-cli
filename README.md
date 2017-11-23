@@ -8,21 +8,24 @@ A `PowerShell` helper that enhances the [vsts-cli](https://github.com/Microsoft/
 ![Subgroup and command tab completion](demos/tabcompletion_demo.gif)
 ![Subgroup and command tab completion](demos/Convert-fromVstsCli.gif)
 
+## Installation
+
+Install it from the `PSGallery`
+
+````powershell
+Install-Module posh-vsts-cli
+````
+
+Alternatively you can also just clone/download this repo and import the `posh-vsts-cli.psd1` module.
+
 ## Usage
-
-First clone the repo or download it, e.g. `git clone https://github.com/bergmeister/posh-vsts-cli.git`
-
-Then import the module
-
-```powershell
-Import-Module .\vsts-cli.psd1
-```
 
 You can invoke the VSTS CLI directly via `Invoke-VstsCli` or its alias `iv` and the output gets converted to PowerShell objects.
 
 ````powershell
-> $builds = iv build list --top 3 --output table> $builds[2] # show the object properties of the third build
-DefinitionName : Pokemon Scanner-CI
+> $builds = iv build list --top 3 --output table
+> $builds[2] # show the object properties of the third build
+DefinitionName : My VSTS build
 Id             : 199
 Number         : 0.1.0+113
 SourceBranch   : master
@@ -45,7 +48,7 @@ The output conversion is currently only tested for the `build` commands of the V
 
 ## Tab Completion
 
-Tab completion is experimental at the moment but already works for groups and subgroups (i.e. the first 2 words after the `vsts` or `iv` command). The first time you use it in a new shell, you need to press tab twice but afterwards just one tab completes the current command.
+Tab completion is experimental at the moment but already works for subgroups and commands (i.e. the first 2 words after the `vsts` or `iv` command). The first time you use it in a new shell, you need to press tab twice but after that just one tab completes the current command.
 
 ````powershell
 >vsts <TAB><TAB>
