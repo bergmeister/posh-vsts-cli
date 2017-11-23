@@ -23,7 +23,7 @@
    Copyright = '(c) 2017 Christoph Bergmeister. All rights reserved.'
     
    # Description of the functionality provided by this module
-   Description = 'A wrapper around the vsts-cli that converts the output into PowerShell objects.'
+   Description = 'Enhances the vsts-cli with tab completion and converts the output into PowerShell objects.'
     
    # Minimum version of the Windows PowerShell engine required by this module
    PowerShellVersion = ''
