@@ -8,7 +8,7 @@
    RootModule = 'posh-vsts-cli.psm1'
     
    # Version number of this module.
-   ModuleVersion = '1.0'
+   ModuleVersion = '1.0.1'
     
    # ID used to uniquely identify this module
    GUID = '5be9bec3-85ef-45a7-8e78-f28d2b71d40c'
