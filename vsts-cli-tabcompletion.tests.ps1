@@ -22,6 +22,15 @@ Describe 'vsts-cli-tabcompletion' {
                 $commandCompletion.CompletionMatches.CompletionText | Should Be 'build'
             }
         }
+
+        It "vsts help option gets expanded" {
+            $commandCompletion = TabExpansion2 -inputScript "vsts --h" -cursorColumn 8
+            if (-not $env:APPVEYOR) # tabexpansion2 does not seem to work in appveyor although it uses PS 5.1. Maybe this is related to it not working for PowerShell Core?
+            {
+                $commandCompletion.CompletionMatches.CompletionText | Should Not BeNullOrEmpty
+                $commandCompletion.CompletionMatches.CompletionText | Should be '--help'
+            }
+        }
         
         It "vsts build gets expanded" {
             $commandCompletion = TabExpansion2 -inputScript "vsts build " -cursorColumn 10
@@ -31,7 +40,7 @@ Describe 'vsts-cli-tabcompletion' {
             }
         }
 
-        It "option expansions expanded" {
+        It "option gets expanded" {
             $commandCompletion = TabExpansion2 -inputScript "vsts build list --t" -cursorColumn 19
             if (-not $env:APPVEYOR) # tabexpansion2 does not seem to work in appveyor although it uses PS 5.1. Maybe this is related to it not working for PowerShell Core?
             {
