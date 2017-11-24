@@ -3,6 +3,10 @@ image: Visual Studio 2017
 install: 
   - ps: $PSVersionTable
   - ps: Install-Module PSScriptAnalyzer -Scope CurrentUser -Force
+  - ps: |
+        Import-Module BitsTransfer # in case the machine is locked down, one can use Invoke-WebRequest instead as well but BitsTransfer is much faster
+        Start-BitsTransfer -Source https://aka.ms/vsts-cli-windows-installer -Destination vsts-cli_installer.msi
+        Start-Process msiexec.exe -Wait -ArgumentList "/I $((gci .\vsts-cli_installer.msi).FullName) /quiet"
 
 build_script:
   - ps: Import-Module .\posh-vsts-cli.psd1

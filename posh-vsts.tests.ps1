@@ -1,4 +1,10 @@
 Describe 'posh-vsts-cli' {
+
+    Context 'Pre-Requisites' {
+        It "VSTS is installed" {
+            Get-Command vsts | Should Not Be $null
+        }
+    }
     
     Context 'Module' {
 
