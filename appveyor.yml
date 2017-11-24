@@ -14,6 +14,7 @@ build_script:
 test_script:
   - choco install codecov
   - ps: |
+        $ENV:Path + ";${ENv:ProgramFiles(x86)}\Microsoft SDKs\VSTS\CLI\wbin"
         # Pester 
         Get-Module Pester -ListAvailable # Show Pester version (should be 3.4)
         $testResultsFile = ".\TestsResults.xml"
