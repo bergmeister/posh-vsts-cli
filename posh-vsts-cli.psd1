@@ -51,7 +51,7 @@ Description = 'Enhances the vsts-cli with tab completion and converting the outp
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @('.\vsts-cli-tabcompletion.psd1')
+RequiredModules = @("$PSScriptRoot\vsts-cli-tabcompletion.psd1")
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
