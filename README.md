@@ -18,7 +18,7 @@ Install it from the [PSGallery](https://www.powershellgallery.com/packages/posh-
 Install-Module posh-vsts-cli
 ````
 
-If you have not already installed the `vsts-cli`, then `posh-vsts-cli` has a function for that too (note that you must launch PowerShell as an administrator for this):
+If you have not already installed the `vsts-cli`, then you can use the following function of `posh-vsts-cli`, which uses the official installer from [here](https://aka.ms/vsts-cli-windows-installer):
 
 ````powershell
 Install-VstsCli

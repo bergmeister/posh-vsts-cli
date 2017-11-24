@@ -14,7 +14,7 @@ Function Install-VstsCli
     Write-Verbose "Downloading installer" -Verbose
     Start-BitsTransfer -Source https://aka.ms/vsts-cli-windows-installer -Destination vsts-cli_installer.msi
     Write-Verbose "Installing VSTS-CLI" -Verbose
-    $result = Start-Process msiexec.exe -Wait -ArgumentList "/I $((Get-ChildItem .\vsts-cli_installer.msi).FullName) /quiet" -PassThru
+    $result = Start-Process msiexec.exe -Wait -ArgumentList "/I $((Get-ChildItem .\vsts-cli_installer.msi).FullName) /quiet" -PassThru -Verb runas
     Write-Verbose "Installer Exit Code: $($result.ExitCode)"
     # refresh path in powershell https://gist.github.com/bill-long/230830312b70742321e0
     foreach($level in "Machine","User") {
