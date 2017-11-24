@@ -13,9 +13,10 @@ Describe 'posh-vsts-cli' {
             Import-Module (Join-Path $PSScriptRoot "$poshvstscli_moduleName.psd1")
             Get-Module $poshvstscli_moduleName | Should Not Be $null
             $exportedFunctions = Get-Command -Module $poshvstscli_moduleName
-            $exportedFunctions.Length | Should Be 2
+            $exportedFunctions.Length | Should Be 3
             $exportedFunctions | Where-Object Name -eq ConvertFrom-VstsCli | Should Not Be $null
             $exportedFunctions | Where-Object Name -eq Invoke-VstsCli | Should Not Be $null
+            $exportedFunctions | Where-Object Name -eq Install-VstsCli | Should Not Be $null
             Get-Alias iv | Should Not Be $null
         }
     }

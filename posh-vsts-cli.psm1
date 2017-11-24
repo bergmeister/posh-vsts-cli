@@ -1,3 +1,35 @@
+
+<#
+.SYNOPSIS
+Installs the VSTS CLI. Requires PowerShell to be launched as Administrator.
+.EXAMPLE
+Install-VstsCli
+#>
+Function Install-VstsCli
+{
+    [CmdletBinding()]
+    param()
+    
+    Import-Module BitsTransfer # in case the machine is locked down, one can use Invoke-WebRequest instead as well but BitsTransfer is much faster
+    Write-Verbose "Downloading installer" -Verbose
+    Start-BitsTransfer -Source https://aka.ms/vsts-cli-windows-installer -Destination vsts-cli_installer.msi
+    Write-Verbose "Installing VSTS-CLI" -Verbose
+    $result = Start-Process msiexec.exe -Wait -ArgumentList "/I $((Get-ChildItem .\vsts-cli_installer.msi).FullName) /quiet" -PassThru
+    Write-Verbose "Installer Exit Code: $($result.ExitCode)"
+    # refresh path in powershell https://gist.github.com/bill-long/230830312b70742321e0
+    foreach($level in "Machine","User") {
+      [Environment]::GetEnvironmentVariables($level).GetEnumerator() | ForEach-Object {
+          # For Path variables, append the new values, if they're not already in there
+          if($_.Name -match 'Path$') { 
+            $_.Value = ($((Get-Content "Env:$($_.Name)") + ";$($_.Value)") -split ';' | Select-Object -unique) -join ';'
+          }
+          $_
+      } | Set-Content -Path { "Env:$($_.Name)" }
+    }
+    Remove-Item .\vsts-cli_installer.msi
+    vsts --version
+}
+
 <#
 .SYNOPSIS
 Invokes the VSTS CLI and converts the output to a PowerShell object.
@@ -9,6 +41,7 @@ ivc build list --output table
 Function Invoke-VstsCli
 {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingInvokeExpression", "")]
+    [CmdletBinding()]
     param()
 
     $arguments = $args -join " "

@@ -5,6 +5,7 @@ A `Windows PowerShell` helper that enhances the [vsts-cli](https://github.com/Mi
 - Tab completion
 - Conversion of the JSON or table output to a PowerShell object by providing the `Convert-FromVstsCli` command
 - Wrapping the call to the `vsts` command and the object conversion in the `iv` command alias
+- Installing the `vsts-cli`
 
 ![Subgroup and command tab completion](demos/tabcompletion_demo.gif)
 ![Subgroup and command tab completion](demos/Convert-fromVstsCli.gif)
@@ -15,6 +16,12 @@ Install it from the [PSGallery](https://www.powershellgallery.com/packages/posh-
 
 ````powershell
 Install-Module posh-vsts-cli
+````
+
+If you have not already installed the `vsts-cli`, then `posh-vsts-cli` has a function for that too (note that you must launch PowerShell as an administrator for this):
+
+````powershell
+Install-VstsCli
 ````
 
 Alternatively you can also just clone/download this repo and import the `posh-vsts-cli.psd1` module.
