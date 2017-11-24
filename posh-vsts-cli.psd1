@@ -12,7 +12,7 @@
 RootModule = 'posh-vsts-cli.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.1.1'
+ModuleVersion = '1.1.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -57,7 +57,7 @@ RequiredModules = @("$PSScriptRoot\vsts-cli-tabcompletion.psd1")
 # RequiredAssemblies = @()
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = 'posh-vsts-cli_aliases.ps1'
+ScriptsToProcess = @("$PSScriptRoot\posh-vsts-cli_aliases.ps1")
 
 # Type files (.ps1xml) to be loaded when importing this module
 # TypesToProcess = @()
