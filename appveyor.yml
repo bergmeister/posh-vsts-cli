@@ -8,7 +8,6 @@ build_script:
   - ps: Import-Module .\posh-vsts-cli.psd1 # needed because otherwise AppVeyor complains
 
 test_script:
-  - choco install codecov
   - ps: |
         # Pester 
         Get-Module Pester -ListAvailable # Show Pester version (should be 3.4)
@@ -29,4 +28,5 @@ test_script:
         { 
             throw "$($results.FailedCount) tests failed."
         }
+  - choco install codecov
   - codecov -f "codeCov.json" -t "032d095a-db58-4d89-80db-c24182c5bcad"

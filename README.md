@@ -16,6 +16,7 @@ Install it from the [PSGallery](https://www.powershellgallery.com/packages/posh-
 
 ````powershell
 Install-Module posh-vsts-cli
+Import-Module posh-vsts-cli
 ````
 
 If you have not already installed the `vsts-cli`, then you can use the following function of `posh-vsts-cli`, which uses the official installer from [here](https://aka.ms/vsts-cli-windows-installer):
@@ -56,7 +57,7 @@ The output conversion is currently only tested for the `build` commands of the V
 
 ## Tab Completion
 
-Tab completion already works for groups (e.g. `vstst build`), commands (e.g. `vsts build list`) and options (e.g. `vsts build list --top`). Tab completion is available for the `vsts` and the `iv` commands and commands. The first time you use it in a new shell, you need to press tab twice but after that just one tab completes the current command.
+Tab completion already works for groups (e.g. `vstst build`), commands (e.g. `vsts build list`) and options (e.g. `vsts build list --top`). Tab completion is available for the `vsts` and the `iv` commands and commands. The first time you use it in a new shell, you need to press tab twice and give it a second to initialize but after that just one tab completes the current command.
 
 ````powershell
 >vsts <TAB><TAB>
