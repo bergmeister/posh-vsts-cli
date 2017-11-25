@@ -1,18 +1,16 @@
 image: Visual Studio 2017
 
-install: 
-  - ps: $PSVersionTable
+install:
   - ps: Install-Module PSScriptAnalyzer -Scope CurrentUser -Force
 
 build_script:
-  - ps: Import-Module .\posh-vsts-cli.psd1 # needed because otherwise AppVeyor complains
+  - ps: $PSVersionTable
 
 test_script:
   - ps: |
         # Pester 
         Get-Module Pester -ListAvailable # Show Pester version (should be 3.4)
         $testResultsFile = ".\TestsResults.xml"
-        Import-Module .\posh-vsts-cli.psd1;
         $results = Invoke-Pester -Script @( @{Path='.\install-vstscli.tests.ps1'},  @{Path='.\posh-vsts.tests.ps1'} ,  @{Path='.\vsts-cli-tabcompletion.tests.ps1'} ) -OutputFormat NUnitXml -OutputFile $testResultsFile -CodeCoverage @(
              (Join-Path -Path $env:APPVEYOR_BUILD_FOLDER -ChildPath '*.psm1')
            ) -PassThru -Verbose
