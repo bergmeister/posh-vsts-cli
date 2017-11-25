@@ -1,6 +1,6 @@
 # posh-vsts-cli [![Build status](https://ci.appveyor.com/api/projects/status/29qq8ghr1mhlkaeh/branch/master?svg=true)](https://ci.appveyor.com/project/bergmeister/posh-vsts-cli/branch/master) [![AppVeyor tests](http://flauschig.ch/batch.php?type=tests&account=bergmeister&slug=posh-vsts-cli)](https://ci.appveyor.com/project/bergmeister/posh-vsts-cli/build/tests) [![codecov](https://codecov.io/gh/bergmeister/posh-vsts-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/bergmeister/posh-vsts-cli) [![PSScriptAnalyzer](https://img.shields.io/badge/Linter-PSScriptAnalyzer-blue.svg)](http://google.com) [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-A `Windows PowerShell` helper that enhances the [vsts-cli](https://github.com/Microsoft/vsts-cli) with
+A `PowerShell` helper that enhances the [vsts-cli](https://github.com/Microsoft/vsts-cli) with
 
 - Tab completion
 - Conversion of the JSON or table output to a PowerShell object by providing the `Convert-FromVstsCli` command
@@ -72,4 +72,4 @@ Tab completion already works for groups (e.g. `vstst build`), commands (e.g. `vs
 >vsts build queue --instance
 ````
 
-It is intended to add future support for subgroups and tab complete on available entities (e.g. `vsts build queue --definition-name` to tab complete the available definition names)
+It is intended to add future support on available entities (e.g. `vsts build queue --definition-name` to tab complete the available definition names).
