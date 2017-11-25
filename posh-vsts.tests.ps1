@@ -1,6 +1,6 @@
 Describe 'posh-vsts-cli' {
 
-    Import-Module (Join-Path $PSScriptRoot "posh-vsts-cli.psd1") 
+    #Import-Module (Join-Path $PSScriptRoot "posh-vsts-cli.psd1") 
 
     Context 'Pre-Requisites' {
         It "VSTS is installed" {
