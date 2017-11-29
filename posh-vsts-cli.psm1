@@ -41,7 +41,6 @@ ivc build list --output table
 Function Invoke-VstsCli
 {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingInvokeExpression", "")]
-    [CmdletBinding()]
     param()
 
     $arguments = $args -join " "
