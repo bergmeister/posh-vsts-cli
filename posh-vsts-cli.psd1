@@ -12,7 +12,7 @@
 RootModule = 'posh-vsts-cli.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.1.3'
+ModuleVersion = '1.1.4'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -98,10 +98,10 @@ PrivateData = @{
         Tags = 'vsts','vsts-cli','tab-completion'
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://github.com/bergmeister/posh-vsts-cli/blob/master/LICENSE'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/bergmeister/posh-vsts-cli'
 
         # A URL to an icon representing this module.
         # IconUri = ''
