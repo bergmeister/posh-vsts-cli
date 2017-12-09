@@ -31,6 +31,31 @@ filter script:MatchingCommand($commandName)
 $completion_Vsts = {
     param($commandName, $commandAst, $cursorPosition)
 
+    if ($global:VstsCompletion.Count -eq 0)
+    {
+        $global:VstsCompletion["commands"] = @{}
+        $global:VstsCompletion["options"] = @()
+        
+        vsts --help | ForEach-Object {
+            Write-Output $_
+            if ($_ -match "^\s{4,5}(\w+)\s+(.+)") # 4 spaces in help before commands
+            {
+                $global:VstsCompletion["commands"][$Matches[1]] = @{}
+                
+                $currentCommand = $global:VstsCompletion["commands"][$Matches[1]]
+                $currentCommand["options"] = @()
+            }
+            elseif ($_ -match $flagRegex)
+            {
+                $global:VstsCompletion["options"] += $Matches[1]
+                if ($Matches[2] -ne $null)
+                {
+                    $global:VstsCompletion["options"] += $Matches[2]
+                }
+            }
+        }
+    }
+
     $command = $null
     $commandParameters = @{}
     $state = "Unknown"
@@ -82,32 +107,6 @@ $completion_Vsts = {
                 $commandParameters[$i] = "CommandOther"
             }
         }
-    }
-
-    if ($global:VstsCompletion.Count -eq 0)
-    {
-        $global:VstsCompletion["commands"] = @{}
-        $global:VstsCompletion["options"] = @()
-        
-        vsts --help | ForEach-Object {
-            Write-Output $_
-            if ($_ -match "^\s{4,5}(\w+)\s+(.+)") # 4 spaces in help before commands
-            {
-                $global:VstsCompletion["commands"][$Matches[1]] = @{}
-                
-                $currentCommand = $global:VstsCompletion["commands"][$Matches[1]]
-                $currentCommand["options"] = @()
-            }
-            elseif ($_ -match $flagRegex)
-            {
-                $global:VstsCompletion["options"] += $Matches[1]
-                if ($Matches[2] -ne $null)
-                {
-                    $global:VstsCompletion["options"] += $Matches[2]
-                }
-            }
-        }
-
     }
     
     if ($wordToComplete -eq $null)
@@ -167,11 +166,15 @@ $completion_Vsts = {
     }
 }
 
-# Register the TabExpension2 function
-if (-not $global:options) { $global:options = @{CustomArgumentCompleters = @{}; NativeArgumentCompleters = @{}}
-}
-$global:options['NativeArgumentCompleters']['vsts'] = $Completion_Vsts
-$global:options['NativeArgumentCompleters']['iv'] = $Completion_Vsts
-$global:options['NativeArgumentCompleters']['Invoke-VstsCli'] = $Completion_Vsts
 
-$function:tabexpansion2 = $function:tabexpansion2 -replace 'End\r\n{', 'End { if ($null -ne $options) { $options += $global:options} else {$options = $global:options}'
+if (Get-Command Register-ArgumentCompleter -ea Ignore)
+{
+    Register-ArgumentCompleter -CommandName 'vsts' -ScriptBlock $completion_Vsts -Native
+    Register-ArgumentCompleter -CommandName 'iv' -ScriptBlock $completion_Vsts -Native
+    Register-ArgumentCompleter -CommandName 'Invoke-VstsCli' -ScriptBlock $completion_Vsts -Native
+}
+else
+{
+    # in version 3 and 4 of PS, one needs to install TabExpansionPlusPlus for backcompat. No check for the psversion needed since the manifest does that already. 
+    throw "Required module TabExpansionPlusPlus is not installed. Please install it using 'Install-Module TabExpansionPlusPlus'"    
+}
