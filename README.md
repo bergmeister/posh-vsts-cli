@@ -15,7 +15,13 @@ A `PowerShell` helper that enhances the [vsts-cli](https://github.com/Microsoft/
 Install it from the [PSGallery](https://www.powershellgallery.com/packages/posh-vsts-cli/1.0):
 
 ````powershell
-Install-Module posh-vsts-cli
+if ($PSVersionTable.PSVersion.Major -ge 5) {
+    Install-Module posh-vsts-cli -Force
+}
+else {
+    Install-Module TabExpansionPlusPlus -Force
+    Install-Module posh-vsts-cli -Force
+}
 Import-Module posh-vsts-cli
 ````
 
