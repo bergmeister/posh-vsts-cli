@@ -59,7 +59,7 @@ Under the hood the vsts cli gets called and then the output gets convertedd to a
 > $builds = vsts build list --top 3 | ConvertFrom-VstsCli
 ````
 
-The output conversion is currently only tested for the `build` commands of the VSTS CLI using `PowerShell 5.1` but should work with others as well.
+The output conversion is currently only tested for the `build` commands of the VSTS CLI using `Windows PowerShell 5.1` and `PowerShell Core 6.0-rc` but should work with others as well and with `PowerShell` versions down to 3.0.
 
 ## Tab Completion
 
